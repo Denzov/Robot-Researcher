@@ -15,7 +15,10 @@ class Gyro {
     float dt;
     float angle = 0;
     float current_millis = 0, last_millis;
-    vec2 S;
+    vec2 S = {};
+    vec2 V = {};
+
+    vec2 base_acceleration = {};
 
   public:
     void init() {
@@ -29,6 +32,9 @@ class Gyro {
         Serial.println("init false");
         while (1);
       }
+      
+      bmi160.getAccelGyroData(accelGyro);
+      base_acceleration = {accelGyro[3], accelGyro[4]};
     }
     void calc() {
       if (!bmi160.getAccelGyroData(accelGyro)) {
@@ -41,14 +47,16 @@ class Gyro {
         }
 #endif
 #ifdef AcX
-        result = accelGyro[3]/16384.f*9.805;
-        if (abs(result) >= 0.1){
+        result = (accelGyro[3]- base_acceleration.x)/16384.f*9.805;
+        if (abs(result) >= 1){
+          V.x += result * dt;
           S.x += result * dt *dt * 0.5;
         }
 #endif        
 #ifdef AcY
-        result = accelGyro[4]/16384.f*9.805;
-        if (abs(result) >= 0.1){
+        result = (accelGyro[4]- base_acceleration.y)/16384.f*9.805;
+        if (abs(result) >= 1){
+          V.y += result * dt;
           S.y += result * dt *dt * 0.5;
         }
 #endif            
@@ -57,6 +65,13 @@ class Gyro {
     }
     float get_angle() {
       return angle;
+    }
+    
+    float get_vx() {
+      return V.x;
+    }
+    float get_vy() {
+      return V.y;
     }
     float get_x() {
       return S.x;
@@ -77,8 +92,8 @@ void setup() {
 void loop() {
   gyro.calc();
   Serial.print("x -- \t");
-  Serial.println(gyro.get_x());
+  Serial.println(gyro.get_vx());
   Serial.print("y -- \t");
-  Serial.println(gyro.get_y());
+  Serial.println(gyro.get_vy());
   Serial.println();
 }
