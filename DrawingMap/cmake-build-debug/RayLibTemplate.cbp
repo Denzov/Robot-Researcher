@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="RayLibTemplate"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libs\;CMake Files\libs\raylib-4.1\;CMake Files\libs\raylib-4.1\src\;CMake Files\libs\raylib-4.1\src\external\;CMake Files\libs\raylib-4.1\src\external\glfw\;CMake Files\libs\raylib-4.1\src\external\glfw\CMake\;CMake Files\libs\raylib-4.1\src\external\glfw\src\;CMake Files\libs\raylib-4.1\cmake\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RayLibTemplate">
+				<Option output="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/RayLibTemplate.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DPLATFORM_DESKTOP"/>
+					<Add option="-DGRAPHICS_API_OPENGL_33"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include-fixed"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 RayLibTemplate"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RayLibTemplate/fast">
+				<Option output="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/RayLibTemplate.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DPLATFORM_DESKTOP"/>
+					<Add option="-DGRAPHICS_API_OPENGL_33"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include-fixed"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 RayLibTemplate/fast"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 package"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package_source">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 package_source"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="raylib">
+				<Option output="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/libraylib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DPLATFORM_DESKTOP"/>
+					<Add option="-DGRAPHICS_API_OPENGL_33"/>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include-fixed"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/Makefile&quot;  VERBOSE=1 raylib"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="raylib/fast">
+				<Option output="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/libraylib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DPLATFORM_DESKTOP"/>
+					<Add option="-DGRAPHICS_API_OPENGL_33"/>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include-fixed"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/Makefile&quot;  VERBOSE=1 raylib/fast"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glfw">
+				<Option output="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/libglfw3.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_GLFW_USE_CONFIG_H"/>
+					<Add option="-DUNICODE"/>
+					<Add option="-D_UNICODE"/>
+					<Add option="-DWINVER=0x0501"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/include"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include-fixed"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/Makefile&quot;  VERBOSE=1 glfw"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glfw/fast">
+				<Option output="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/libglfw3.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_GLFW_USE_CONFIG_H"/>
+					<Add option="-DUNICODE"/>
+					<Add option="-D_UNICODE"/>
+					<Add option="-DWINVER=0x0501"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/include"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src"/>
+					<Add directory="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include-fixed"/>
+					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/Makefile&quot;  VERBOSE=1 glfw/fast"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/cmake-build-debug/libs/raylib/raylib/external/glfw/src/glfw_config.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/include/GLFW/glfw3.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/include/GLFW/glfw3native.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/egl_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/egl_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/init.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/input.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/internal.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/mappings.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/monitor.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/osmesa_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/osmesa_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/vulkan.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/wgl_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/wgl_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/win32_init.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/win32_joystick.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/win32_joystick.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/win32_monitor.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/win32_platform.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/win32_thread.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/win32_time.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/win32_window.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/window.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/raudio.c">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/raudio.h">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/raylib.h">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/raymath.h">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/rcore.c">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/rlgl.h">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/rmodels.c">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/rshapes.c">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/rtext.c">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/rtextures.c">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/utils.c">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/utils.h">
+			<Option target="raylib"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/src/main.cpp">
+			<Option target="RayLibTemplate"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/CMakeOptions.txt">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/raylib.pc.in">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\src\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\src\external\glfw\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/CMake/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\src\external\glfw\CMake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/CMake/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\src\external\glfw\CMake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\src\external\glfw\src\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/src/external/glfw/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\src\external\glfw\src\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/AddIfFlagCompiles.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/BuildOptions.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/CompileDefinitions.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/CompilerFlags.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/EnumOption.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/GlfwImport.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/InstallConfigurations.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/JoinPaths.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/LibraryConfigurations.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/LibraryPathToLinkerFlags.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/PackConfigurations.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/PopulateConfigVariablesLocally.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/efarinov/Documents/RayLibTemplate/RayLibTemplate/libs/raylib-4.1/cmake/raylib-config-version.cmake">
+			<Option virtualFolder="CMake Files\libs\raylib-4.1\cmake\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
