@@ -7,6 +7,13 @@ Graph::Graph(gr_int n)
         append_vert();
     }
 }
+
+Graph::~Graph(){
+    delete graph;
+    delete visited;
+    delete path;
+
+}
 void Graph::append_vert()
 {
     graph->push_back(std::vector<gr_int>());
@@ -20,10 +27,9 @@ bool Graph::DFS(gr_int current_vertex, gr_int required_vertex)
 {
     (*visited)[current_vertex] = true;
     
-    std::cout << current_vertex << ' ';
     if (current_vertex == required_vertex)
     {
-        std::cout << "!!!";
+    
         path->push_back(current_vertex);
         return true;
     }
@@ -64,5 +70,7 @@ void Graph::print_path(){
         std::cout << vertex << " ";
     }
 }
-/*
-    */
+
+std::vector<gr_int>* Graph::Get_Path(){
+    return path;
+}
