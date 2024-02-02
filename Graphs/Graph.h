@@ -1,8 +1,11 @@
 #ifndef _GRAPH_H_ 
 #define _GRAPH_H_
 
-#include "function.h"
+#include <map>
+#include <vector>
+#include <iostream>
 
+typedef uint64_t gr_int;
 
 class Graph{
 private:
