@@ -2,6 +2,10 @@
 
 Graph::Graph(gr_int n)
 {
+    graph = new std::vector<std::vector<gr_int>>;
+    visited = new std::vector<bool>;
+    path = new std::vector<gr_int>;
+    
     for (gr_int i = 0; i < n; i++)
     {
         append_vert();

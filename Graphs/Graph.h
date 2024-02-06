@@ -8,10 +8,11 @@
 typedef uint64_t gr_int;
 
 class Graph{
-private:
-    std::vector<std::vector<gr_int>>* graph = new std::vector<std::vector<gr_int>>;
-    std::vector<bool>* visited = new std::vector<bool>;
-    std::vector<gr_int>* path = new std::vector<gr_int>;
+protected:
+    std::vector<std::vector<gr_int>>* graph;
+    std::vector<bool>* visited;
+    std::vector<gr_int>* path;
+    
 public:
     Graph();
     ~Graph();
