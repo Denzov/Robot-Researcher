@@ -2,7 +2,7 @@
 
 Graph::Graph(gr_int n)
 {
-    graph = new std::vector<std::vector<gr_int>>;
+    graph = new std::vector<Vertex>;
     visited = new std::vector<bool>;
     path = new std::vector<gr_int>;
     
@@ -20,13 +20,13 @@ Graph::~Graph(){
 }
 void Graph::append_vert()
 {
-    graph->push_back(std::vector<gr_int>());
+    graph->push_back(Vertex());
     visited->push_back(false);
 }
-void Graph::add_edge(gr_int src, std::vector<gr_int> dest)
-{
-    (*graph)[src] = dest;
-}
+// void Graph::add_edge(gr_int src, std::vector<gr_int> dest)
+// {
+//     (*graph)[src] = dest;
+// }
 bool Graph::DFS(gr_int current_vertex, gr_int required_vertex)
 {
     (*visited)[current_vertex] = true;
@@ -38,11 +38,11 @@ bool Graph::DFS(gr_int current_vertex, gr_int required_vertex)
         return true;
     }
 
-    for (gr_int i = 0; i != (*graph)[current_vertex].size(); i++)
+    for (gr_int i = 0; i != (*graph)[current_vertex].neighbours.size(); i++)
     {
-        if (!(*visited)[(*graph)[current_vertex][i]])
+        if (!(*visited)[(*graph)[current_vertex].neighbours[i]])
         {
-            if(DFS((*graph)[current_vertex][i], required_vertex))
+            if(DFS((*graph)[current_vertex].neighbours[i], required_vertex))
             {
                 path->push_back(current_vertex);
                 return true;
@@ -60,7 +60,7 @@ void Graph::print()
 
         std::cout << n++ << ": ";
 
-        for (auto j : i)
+        for (auto j : i.neighbours)
         {
             std::cout << j << ' ';
         }
