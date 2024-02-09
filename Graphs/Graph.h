@@ -17,14 +17,19 @@ public:
     Graph();
     ~Graph();
     Graph(gr_int n);
-    void append_vert(float x, float y);
-//    void add_edge(gr_int src, std::vector<gr_int> dest);
+
+    float Get_Vert_x(gr_int n);
+    float Get_Vert_y(gr_int n);
+
+
     bool DFS(gr_int current_vertex, gr_int required_vertex);     
     std::vector<gr_int>* Get_Path();
 
-    void print();
+    void append_vert(float x, float y);
     void print_path();
+    void print();
     
+//    void add_edge(gr_int src, std::vector<gr_int> dest);
 
 };
 

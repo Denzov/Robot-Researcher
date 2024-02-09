@@ -10,9 +10,11 @@ class Vertex
 {
 private:
     bool isWall = 0;
-    float x, y;    
+      
     
 public:
+    float x, y;  
+
     std::vector<gr_int> neighbours;
     
 
@@ -23,6 +25,8 @@ public:
     void append_neighbours(std::vector<gr_int> dest);
 
     bool IsWall();
+
+    
 };
 
 #endif

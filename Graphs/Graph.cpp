@@ -10,7 +10,7 @@ Graph::Graph(gr_int n)
     {
         append_vert(0, i);
     }
-    
+
 }
 
 Graph::~Graph(){
@@ -79,3 +79,11 @@ void Graph::print_path(){
 std::vector<gr_int>* Graph::Get_Path(){
     return path;
 }
+
+float Graph::Get_Vert_x(gr_int n){
+    return (*graph)[n].x;
+}
+float Graph::Get_Vert_y(gr_int n){
+    return (*graph)[n].y;
+}
+
