@@ -4,35 +4,8 @@
 #define RAYGUI_IMPLEMENTATION
 #include "extras/raygui.h"
 #include "variables.hpp"
-#include "block.hpp"
 
 using namespace std;
-
-bool CheckPos(Vector2 positionBlock, std::vector<Block> blocks)
-{ // true - if has not existed yet
-    float k = positionBlock.y / positionBlock.x;
-    for (int i = 0; i < blocks.size(); ++i)
-    {
-        if (blocks[i].position.y / blocks[i].position.x == k)
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
-void addingBlock(vector<Block> &blocks, float dist, float degree, Vector2 currentPos)
-{
-    Block block;
-    block.setX(degree, dist, currentPos);
-    block.setY(degree, dist, currentPos);
-
-    // Checking position
-    if (CheckPos(block.position, blocks))
-    {
-        blocks.emplace_back(block);
-    }
-}
 
 void movementRobot(Vector2 &coord, float &degree)
 {
@@ -93,6 +66,12 @@ void rotateAndZoom(Camera2D &cam)
     }
 }
 
+void screenShotMap(){
+    if(IsKeyPressed(KEY_F1)){
+        TakeScreenshot(file_name.c_str());
+    }
+}
+
 int main()
 {
     // Initialization
@@ -100,7 +79,7 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "robot view");
 
-    Font font = LoadFontEx("CALIBRI.TTF", 10, 0, 0);
+    Font font = LoadFontEx("../src/CALIBRI.TTF", 10, 0, 0);
 
     SetTargetFPS(60); // Set our game to run at 60 frames-per-second
     //---------------------------------------------------------------------------------------
@@ -109,20 +88,11 @@ int main()
     camera.rotation = 0.f;
     camera.zoom = 1.f;
 
-    // Main game loop
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
-        game_time = (int)(GetTime() * 1000);
-        if (game_time - previous_time > 500)
-        {
-            dist = GetRandomValue(1, 2500);
-            previous_time = game_time;
-        }
-        // Update
-        //----------------------------------------------------------------------------------
         string text = "distance : " + to_string(dist) + " angle :" + to_string(angle);
 
-        addingBlock(walls, dist, angle, coordinates);
+        screenShotMap();
         movementRobot(coordinates, angle);
 
         movementCamera(cameraCoord);
@@ -136,14 +106,8 @@ int main()
         ClearBackground(WHITE);
 
         BeginMode2D(camera);
-        for (int i = 0; i < walls.size(); ++i)
-        {
-            DrawRectangleV(walls[i].position, walls[i].size, walls[i].color);
-        }
         DrawRectanglePro({/*coordinate x*/coordinates.x, /*coordinate y*/coordinates.y, /*width*/robotSize.x, /*height*/robotSize.y},
                     (Vector2){robotSize.x / 2, robotSize.y / 2}, angle, RED);
-        DrawLineV(coordinates, walls[walls.size() - 1].position, GREEN);
-
         EndMode2D();
 
         DrawText(text.c_str(), 20.0, 100.0, 10.0, MAROON);

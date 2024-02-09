@@ -13,3 +13,6 @@ set(BUILD_GAMES    OFF CACHE BOOL "" FORCE) # or games
 
 add_subdirectory(libs/raylib-4.1 ./libs/raylib)
 target_link_libraries(RayLibTemplate PRIVATE raylib)
+
+add_subdirectory(../Graphs ./libs/graphs)
+target_link_libraries(RayLibTemplate PRIVATE graphs)
