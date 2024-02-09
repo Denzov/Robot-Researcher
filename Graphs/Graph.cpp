@@ -8,8 +8,9 @@ Graph::Graph(gr_int n)
     
     for (gr_int i = 0; i < n; i++)
     {
-        append_vert();
+        append_vert(0, i);
     }
+    
 }
 
 Graph::~Graph(){
@@ -18,9 +19,9 @@ Graph::~Graph(){
     delete path;
 
 }
-void Graph::append_vert()
+void Graph::append_vert(float x, float y)
 {
-    graph->push_back(Vertex());
+    graph->push_back(Vertex(x, y));
     visited->push_back(false);
 }
 // void Graph::add_edge(gr_int src, std::vector<gr_int> dest)

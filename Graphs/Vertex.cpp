@@ -3,7 +3,7 @@
 Vertex::Vertex(){
 }
 
-Vertex::Vertex(gr_int x, gr_int y){
+Vertex::Vertex(float x, float y){
     this->x = x;
     this->y = y;
 }

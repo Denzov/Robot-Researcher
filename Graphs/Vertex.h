@@ -10,13 +10,14 @@ class Vertex
 {
 private:
     bool isWall = 0;
-    gr_int x, y;    
+    float x, y;    
     
 public:
     std::vector<gr_int> neighbours;
+    
 
     Vertex();
-    Vertex(gr_int x, gr_int y);
+    Vertex(float x, float y);
     ~Vertex();
 
     void append_neighbours(std::vector<gr_int> dest);
