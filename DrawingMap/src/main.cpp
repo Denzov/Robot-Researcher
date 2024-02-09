@@ -92,6 +92,13 @@ int main()
     {
         string text = "distance : " + to_string(dist) + " angle :" + to_string(angle);
 
+        current_time = int(GetTime() * 1000);
+        if(current_time - last_time > 500){
+            last_time = current_time;
+            dist = randomValue(0, 1000);
+        }
+
+
         screenShotMap();
         movementRobot(coordinates, angle);
 

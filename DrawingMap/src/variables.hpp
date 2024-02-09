@@ -15,6 +15,9 @@ Vector2 robotSize = {50, 50};
 //input
 float dist = 0;
 float angle = 0;
+int last_time = 0;
+int current_time = 0;
+
 
 std::string file_name = "map.png";
 

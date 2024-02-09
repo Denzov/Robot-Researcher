@@ -4,11 +4,9 @@ project(graphs)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-file(GLOB SOURCES Graph.cpp Graph.h)
+file(GLOB SOURCES Graph.cpp Vertex.cpp)
+set(HEADERS Graph.h Vertex.h)
 
-set_target_properties(raylib PROPERTIES
-                    graphs Graph.h)
+add_library(graphs SHARED ${SOURCES})
+target_include_directories(graphs PUBLIC .)
 
-#target_include_directories(graphs PUBLIC Graph.h)
-
-add_library(graphs ${SOURCES} Graph.h)
