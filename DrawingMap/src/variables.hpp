@@ -12,8 +12,10 @@ const int screenHeight = 1040;
 Vector2 coordinates = {screenWidth / 2, screenHeight / 2};
 Vector2 robotSize = {50, 50};
 
+Vector2 blockSize = {5, 5};
+
 //input
-float dist = 0;
+float dist = 100;
 float angle = 0;
 int last_time = 0;
 int current_time = 0;
@@ -22,7 +24,7 @@ int current_time = 0;
 std::string file_name = "map.png";
 
 //graph
-Graph graph(0);
+// Graph graph(0);
 
 //camera
 Camera2D camera = {0};
