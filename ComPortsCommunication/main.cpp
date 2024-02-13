@@ -6,13 +6,15 @@
 
 #include <stdio.h>
 #define CE_SERIAL_IMPLEMENTATION
-#include "ceSerial.h"
+#include "comPortCommunication.h"
+#include <string>
+#include <iostream>
 using namespace std;
 
 int main()
 {
 	ceSerial com("\\\\.\\COM3",9600,8,'N',1); // Windows
-
+	
 	printf("Opening port %s.\n",com.GetPort().c_str());
 	if (com.Open() == 0) {
 		printf("OK.\n");
@@ -24,18 +26,25 @@ int main()
 
 	bool successFlag;
 	printf("Writing.\n");
-	char s[]="KEK!";
+	char s[]="AZAAZZAZAZAZ!";
 	successFlag=com.Write(s); // write string
 //	successFlag=com.WriteChar('!'); // write a character
 	printf("Waiting 3 seconds.\n");
 	ceSerial::Delay(3000); // delay to wait for a character
 
 	printf("Reading.\n");
-	char c=com.ReadChar(successFlag); // read a char
-	if(successFlag) printf("Rx: %c\n",c);
-    else printf("Not read.\n");
+	char c=com.ReadChar(successFlag);	
+	std::string answer;
+	while(successFlag)
+	{
+		answer += c;
+		c=com.ReadChar(successFlag);	
+	};
+	
+	
+	if(answer.size() != 0) std::cout<<"answer:\""<<answer<<"\"\n";;
 
-	printf("Closing port %s.\n", com.GetPort().c_str());
+	//printf("Closing port %s.\n", com.GetPort().c_str());
 	com.Close();
 	return 0;
 }
