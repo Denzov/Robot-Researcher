@@ -9,8 +9,12 @@ int main()
 {
 	comPortCommunication port;
 	port.init(3);
-	string s = "LOL!";
-	port.push_info("LOL!");
-	port.take_feedback();
-	std::cout<< "ANSWER: " << port.GetFeedback()<<'\n';	
+	// string s = "101|5";
+	// port.push_info(s.c_str());
+	while(1){
+		port.take_feedback();
+		std::cout<< port.GetFeedback();	
+		std::cout<< "\n";
+
+	} 
 }

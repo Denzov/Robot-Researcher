@@ -11,7 +11,7 @@ bool comPortCommunication::init(uint8_t port){
     if (com.Open() == 0) {
 
         #ifdef DEBUG
-		std::cout<<"[INFO] Was open port %s.\n" << com.GetPort().c_str() << '\n';
+		std::cout<<"[INFO] Was open port " << com.GetPort().c_str() << '\n';
         #endif
         return 1;
 	}
@@ -26,17 +26,53 @@ bool comPortCommunication::init(uint8_t port){
 
 bool comPortCommunication::take_feedback(){
     buffer_char = com.ReadChar(successFlag);
+    feedback.clear();    
     
-    feedback.clear();
 	while(successFlag)
 	{
-        std::cout<<buffer_char<<'\n';
-		feedback += buffer_char;
-		buffer_char = com.ReadChar(successFlag);	
+		if(buffer_char != '@'){
+            feedback += buffer_char;
+            buffer_char = com.ReadChar(successFlag);	
+
+        }
+        else{
+            break;
+        }
+
+        
 	}
+    //com.Delay(1000);
     return feedback.size() != 0;
 }
 
 std::string comPortCommunication::GetFeedback(){
     return feedback;
+}
+
+void comPortCommunication::transform_info(){
+    buffer_str.clear();
+    number_of_stick = 0;
+    for(uint8_t i = 0; i < feedback.size(); i++){
+        if(feedback[i] != '|'){
+            continue;
+        }
+        else{
+            number_of_stick = i;
+        }
+        if(feedback.size() - 1 != i){
+            continue;
+        }
+
+        if(number_of_stick == i){
+            buffer_str.resize(number_of_stick - 1);
+            for (uint8_t i = 0; i < number_of_stick - 1; i++)
+            {
+                buffer_str[i] = feedback[i];
+            }
+            
+        }
+    }
+    
+
+
 }
