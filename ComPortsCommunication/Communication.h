@@ -8,7 +8,7 @@
 #include <cstdint>
 #include "ceSerial.h"
 
-class comPortCommunication
+class Communication
 {
 private:
     ceSerial com;
@@ -22,21 +22,32 @@ private:
     std::string feedback;
 
     float data[2];
-    uint8_t number_of_stick;
+
+    uint8_t number_of_stick = 0;
+    uint8_t value_correct_sym = 0;
 
 public:
     
-    bool init(uint8_t port);
-    bool take_feedback();
+    void take_feedback();
     void transform_info();
+    void print_data();
+    void take_data();
+
+    bool init(uint8_t port);
+    bool infoIsCorrect();
+
     template <class T>
     void push_info(T data);
     
+
+    float GetDistance();
+    float GetAngle();
+
     std::string GetFeedback();
 };
 
 template <class T>
-void comPortCommunication::push_info(T data)
+void Communication::push_info(T data)
 {
     std::sprintf(s_data, "%s", data);
     successFlag = com.Write(s_data, strlen(s_data) + 1);

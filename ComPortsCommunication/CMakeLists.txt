@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(GLOB SOURCES *.cpp)
 
-add_executable(Communications main.cpp comPortCommunication.cpp)
+add_executable(Communications main.cpp Communication.cpp)
