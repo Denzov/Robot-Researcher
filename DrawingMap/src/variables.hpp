@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <raylib.h>
-#include <Graph.h>
+#include "Graph.h"
 
 const int screenWidth = 1920;
 const int screenHeight = 1040;
@@ -24,7 +24,7 @@ int current_time = 0;
 std::string file_name = "map.png";
 
 //graph
-// Graph graph(0);
+Graph graph;
 
 //camera
 Camera2D camera = {0};

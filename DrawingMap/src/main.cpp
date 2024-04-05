@@ -1,11 +1,10 @@
-#include <raylib.h>
 #define RAYGUI_IMPLEMENTATION
+#include <raylib.h>
 #include <string>
 #include <iostream>
 #include <cmath>
 #include "variables.hpp"
 #include "Movements.hpp"
-
 using namespace std;
 
 Vector2 countingCoordinates(float length, float deg)
@@ -15,7 +14,6 @@ Vector2 countingCoordinates(float length, float deg)
     return (Vector2){x, y};
 }
 
-
 int main()
 {
     // Initialization
@@ -23,10 +21,11 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "robot view");
 
-    //Font font = LoadFontEx("../src/CALIBRI.TTF", 10, 0, 0);
-
     SetTargetFPS(60); // Set our game to run at 60 frames-per-second
     //---------------------------------------------------------------------------------------
+
+    // first vertex
+    graph.append_vert(coordinates, false);
 
     camera.target = coordinates;
     camera.rotation = 0.f;
@@ -40,9 +39,18 @@ int main()
         if (current_time - last_time > 500)
         {
             last_time = current_time;
-            dist = GetRandomValue(0, 1000);
+            dist = 100;
         }
 
+        //------------------------------------------------------------------------
+        // Appending vetexes
+        for (auto &[pos, vertex]: *graph.graph)
+        {   
+            
+            vertex.append_neighbours()
+        }
+
+        //------------------------------------------------------------------------
         screenShotMap(file_name);
         movementRobot(coordinates, angle);
 
@@ -60,7 +68,7 @@ int main()
         DrawRectanglePro({/*coordinate x*/ coordinates.x, /*coordinate y*/ coordinates.y, /*width*/ robotSize.x, /*height*/ robotSize.y},
                          (Vector2){robotSize.x / 2, robotSize.y / 2}, angle, RED);
         DrawLineV(coordinates, countingCoordinates(dist, angle), GREEN);
-            EndMode2D();
+        EndMode2D();
 
         DrawText(text.c_str(), 20.0, 100.0, 10.0, MAROON);
         EndDrawing();
