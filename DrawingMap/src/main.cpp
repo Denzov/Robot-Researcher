@@ -7,10 +7,18 @@
 #include "Movements.hpp"
 using namespace std;
 
-Vector2 countingCoordinates(float length, float deg)
+Vector2 countingCoordinates(float length, float deg, Vector2 coords)
 {
-    float x = cos(deg) * length + x;
-    float y = sin(deg) * length + y;
+    float x = cos(deg * PI / 180) * length + coords.x;
+    float y = sin(deg * PI / 180) * length + coords.y;
+    return (Vector2){x, y};
+}
+
+Vector2 roundingToVertSize(Vector2 pos)
+{
+    float x = (int(pos.x) / int(vertexSize.x)) * int(vertexSize.x);
+    float y = (int(pos.y) / int(vertexSize.y)) * int(vertexSize.y);
+
     return (Vector2){x, y};
 }
 
@@ -25,7 +33,15 @@ int main()
     //---------------------------------------------------------------------------------------
 
     // first vertex
+    vector<Vector2> vec_neighs;
+    vec_neighs.push_back({coordinates.x + vertexSize.x, coordinates.y});
+    vec_neighs.push_back({coordinates.x - vertexSize.x, coordinates.y});
+    vec_neighs.push_back({coordinates.x, coordinates.y + vertexSize.y});
+    vec_neighs.push_back({coordinates.x, coordinates.y - vertexSize.y});
+
     graph.append_vert(coordinates, false);
+    (*graph.graph)[coordinates].append_neighbours(vec_neighs);
+    vec_neighs.clear();
 
     camera.target = coordinates;
     camera.rotation = 0.f;
@@ -33,24 +49,44 @@ int main()
 
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
-        string text = "distance : " + to_string(dist) + " angle :" + to_string(angle);
+        string text = "distance : " + to_string(dist) + " angle :" + to_string(angle) + " size : " + to_string(graph.graph->size());
 
-        current_time = int(GetTime() * 1000);
-        if (current_time - last_time > 500)
+        //------------------------------------------------------------------------
+        // Appending vertexes
+        if ((*graph.graph).size() <= vertexQuantity)
         {
-            last_time = current_time;
-            dist = 100;
-        }
+            for (auto &[pos, vertex] : (*graph.graph))
+            {
+                if (vertex.neighbours.size() < 4)
+                {
+                    vec_neighs.push_back({pos.x + vertexSize.x, pos.y});
+                    vec_neighs.push_back({pos.x - vertexSize.x, pos.y});
+                    vec_neighs.push_back({pos.x, pos.y + vertexSize.y});
+                    vec_neighs.push_back({pos.x, pos.y - vertexSize.y});
 
-        //------------------------------------------------------------------------
-        // Appending vetexes
-        for (auto &[pos, vertex]: *graph.graph)
-        {   
-            
-            vertex.append_neighbours()
-        }
+                    graph.append_vert(coordinates, false);
+                    vec_neighs.clear();
+                }
+            }
 
+            for (auto &[pos, vertex] : *(graph.graph))
+            {
+                if (vertex.neighbours.size() < 4)
+                {
+                    for (int i = 0; i < vertex.neighbours.size(); i++)
+                    {
+                        graph.append_vert(vertex.neighbours[i], false);
+                    }
+                }
+            }
+        }
         //------------------------------------------------------------------------
+
+        // Appending walls
+        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle, coordinates));
+
+        graph.append_wall(coordsWall);
+        //-------------------------------------------------------------------------
         screenShotMap(file_name);
         movementRobot(coordinates, angle);
 
@@ -65,9 +101,17 @@ int main()
         ClearBackground(WHITE);
 
         BeginMode2D(camera);
+
+        // Draw vertexes
+        for (auto &[pos, vertex] : *graph.graph)
+        {
+            Rectangle recVert = {pos.x, pos.y, vertexSize.x, vertexSize.y};
+            DrawRectangleLinesEx(recVert, 1 / camera.zoom, GREEN);
+        }
+
         DrawRectanglePro({/*coordinate x*/ coordinates.x, /*coordinate y*/ coordinates.y, /*width*/ robotSize.x, /*height*/ robotSize.y},
                          (Vector2){robotSize.x / 2, robotSize.y / 2}, angle, RED);
-        DrawLineV(coordinates, countingCoordinates(dist, angle), GREEN);
+        DrawLineV(coordinates, countingCoordinates(dist, angle, coordinates), VIOLET);
         EndMode2D();
 
         DrawText(text.c_str(), 20.0, 100.0, 10.0, MAROON);

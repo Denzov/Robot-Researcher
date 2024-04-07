@@ -17,4 +17,5 @@ void Graph::append_vert(Vector2 ver, bool wallIs)
 void Graph::append_wall(Vector2 ver)
 {
     (*walls)[ver] = Vertex(ver, true);
+    (*graph)[ver] = Vertex(ver, true);
 }

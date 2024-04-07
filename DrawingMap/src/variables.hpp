@@ -25,6 +25,8 @@ std::string file_name = "map.png";
 
 //graph
 Graph graph;
+Vector2 vertexSize = {10, 10};
+int vertexQuantity = 30000;
 
 //camera
 Camera2D camera = {0};
