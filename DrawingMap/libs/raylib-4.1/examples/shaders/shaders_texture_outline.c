@@ -75,9 +75,9 @@ int main(void)
                 
             EndShaderMode();
 
-            DrawText("Shader-based\ntexture\noutline", 10, 10, 20, GRAY);
+            rl_DrawText("Shader-based\ntexture\noutline", 10, 10, 20, GRAY);
             
-            DrawText(TextFormat("Outline size: %i px", (int)outlineSize), 10, 120, 20, MAROON);
+            rl_DrawText(TextFormat("Outline size: %i px", (int)outlineSize), 10, 120, 20, MAROON);
 
             DrawFPS(710, 10);
 
@@ -90,7 +90,7 @@ int main(void)
     UnloadTexture(texture);
     UnloadShader(shdrOutline);
 
-    CloseWindow();        // Close window and OpenGL context
+    rl_CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
     return 0;

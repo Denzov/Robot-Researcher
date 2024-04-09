@@ -89,6 +89,11 @@ void Communication::take_data(){
 float Communication::GetDistance(){
     return data[0];
 }
+
 float Communication::GetAngle(){
     return data[1];
 }
+
+/*void Communication::push_info(){
+    
+}*/

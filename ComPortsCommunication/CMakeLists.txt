@@ -5,5 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(GLOB SOURCES *.cpp)
+set(HEADERS ceSerial.h Communication.h)
 
-add_executable(Communications main.cpp Communication.cpp)
+add_library(Communications STATIC ${SOURCES})
+target_include_directories(Communications PUBLIC .)

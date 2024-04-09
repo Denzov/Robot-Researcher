@@ -4,7 +4,7 @@
 *
 *   Loaded sprite fonts have been generated following XNA SpriteFont conventions:
 *     - Characters must be ordered starting with character 32 (Space)
-*     - Every character must be contained within the same Rectangle height
+*     - Every character must be contained within the same rl_Rectangle height
 *     - Every character and every line must be separated by the same distance (margin/padding)
 *     - Rectangles must be defined by a MAGENTA color background
 *
@@ -78,7 +78,7 @@ int main(void)
     UnloadFont(font2);      // Font unloading
     UnloadFont(font3);      // Font unloading
 
-    CloseWindow();          // Close window and OpenGL context
+    rl_CloseWindow();          // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
     return 0;

@@ -777,7 +777,7 @@ Detailed changes:
 [core] RENAMED: struct Camera to Camera3D
 [core] RENAMED: struct SpriteFont to Font -> plus all required functions!
 [core] RENAMED: enum TextureFormat to PixelFormat
-[core] REVIEWED: Rectangle params int to float
+[core] REVIEWED: rl_Rectangle params int to float
 [core] REVIEWED: timing system for macOS
 [core] REMOVED: ColorToFloat()
 [core] ADDED: GetCurrentTime() on macOS
@@ -1216,7 +1216,7 @@ other changes:
 [core] Android: Reviewed Android App cycle, paused if inactive
 [shaders] Implemented Blinn-Phong lighting shading model
 [textures] Implemented Floyd-Steinberg dithering - ImageDither()
-[text] Added line-break support to DrawText()
+[text] Added line-break support to rl_DrawText()
 [text] Added TrueType Fonts support (using stb_truetype)
 [models] Implement function: CalculateBoundingBox(Mesh mesh)
 [models] Added functions to check Ray collisions
@@ -1251,7 +1251,7 @@ other changes:
 [rlgl] Added check for OpenGL supported extensions
 [rlgl] Added function SetBlenMode() to select some predefined blending modes 
 [core] Added support for drop&drag of external files into running program
-[core] Added functions ShowCursor(), HideCursor(), IsCursorHidden()
+[core] Added functions rl_ShowCursor(), HideCursor(), IsCursorHidden()
 [core] Renamed function SetFlags() to SetConfigFlags()
 [shapes] Simplified some functions to improve performance
 [textures] Review of Image struct to support multiple data formats
@@ -1265,7 +1265,7 @@ other changes:
 [textures] Added function ImageConvertFormat()
 [textures] Added function GenTextureMipmaps()
 [text] Added support for Latin-1 Extended characters for default font
-[text] Redesigned SpriteFont struct, replaced Character struct by Rectangle
+[text] Redesigned SpriteFont struct, replaced Character struct by rl_Rectangle
 [text] Removed function GetFontBaseSize(), use directly spriteFont.size
 [models] Review of struct: Model (added shaders support)
 [models] Added 3d collision functions (sphere vs sphere vs box vs box)
@@ -1468,7 +1468,7 @@ Release:     raylib 1.0.2 (1 December 2013)
 -----------------------------------------------
 Update:     raylib 1.0.1 (28 November 2013)
 -----------------------------------------------
-[text] DrawText() - Removed spacing parameter
+[text] rl_DrawText() - Removed spacing parameter
 [text] MeasureText() - Removed spacing parameter
 [text] DrawFps() - Renamed to DrawFPS() for coherence with similar function
 [core] IsKeyPressed() - Change functionality, check if key pressed once

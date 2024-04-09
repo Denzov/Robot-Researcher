@@ -63,7 +63,7 @@ int main(void)
                 DrawTexture(texture, 0, 0, WHITE);  // Drawing BLANK texture, all magic happens on shader
             EndShaderMode();            // Disable our custom shader, return to default shader
 
-            DrawText("BACKGROUND is PAINTED and ANIMATED on SHADER!", 10, 10, 20, MAROON);
+            rl_DrawText("BACKGROUND is PAINTED and ANIMATED on SHADER!", 10, 10, 20, MAROON);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ int main(void)
     //--------------------------------------------------------------------------------------
     UnloadShader(shader);
 
-    CloseWindow();        // Close window and OpenGL context
+    rl_CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
     return 0;

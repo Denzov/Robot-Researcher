@@ -1,10 +1,17 @@
 #define RAYGUI_IMPLEMENTATION
+
 #include <raylib.h>
 #include <string>
 #include <iostream>
 #include <cmath>
 #include "variables.hpp"
 #include "Movements.hpp"
+
+#define CE_SERIAL_IMPLEMENTATION
+#define DEBUG
+
+#include <Communication.h>
+
 using namespace std;
 
 Vector2 countingCoordinates(float length, float deg, Vector2 coords)
@@ -39,7 +46,12 @@ int main()
 {
     // Initialization
     //--------------------------------------------------------------------------------------
+    
+    Communication port;
+	port.init(4);
 
+	// string s = "101|5";
+	// port.push_info(s.c_str());
     InitWindow(screenWidth, screenHeight, "robot view");
 
     SetTargetFPS(60); // Set our game to run at 60 frames-per-second
@@ -62,7 +74,10 @@ int main()
 
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
-        string text = "distance : " + to_string(dist) + " angle :" + to_string(angle) + " size : " + to_string(graph.graph->size());
+		port.take_data();
+        dist = port.GetDistance();
+        angle = port.GetAngle();
+        string text = "distance : " + to_string(dist) + " angle :" + to_string(angle);
 
         //------------------------------------------------------------------------
         // Appending vertexes
@@ -117,11 +132,11 @@ int main()
         // Draw vertexes
         // for (auto &[pos, vertex] : *(graph.graph))
         // {
-        //     Rectangle recVert = {pos.x, pos.y, vertexSize.x, vertexSize.y};
+        //     rl_Rectangle recVert = {pos.x, pos.y, vertexSize.x, vertexSize.y};
         //     DrawRectangleLinesEx(recVert, 1 / camera.zoom, GREEN);
         // }
         for(auto &[pos, wall] : *(graph.walls)){
-            Rectangle recWall = {pos.x, pos.y, vertexSize.x, vertexSize.y};
+            rl_Rectangle recWall = {pos.x, pos.y, vertexSize.x, vertexSize.y};
             DrawRectangleRec(recWall, BLACK);
         }
 
@@ -130,14 +145,14 @@ int main()
         DrawLineV(coordinates, countingCoordinates(dist, angle, coordinates), VIOLET);
         EndMode2D();
 
-        DrawText(text.c_str(), 20.0, 100.0, 10.0, MAROON);
+        rl_DrawText(text.c_str(), 20.0, 100.0, 10.0, MAROON);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    CloseWindow(); // Close window and OpenGL context
+    rl_CloseWindow(); // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
     return 0;

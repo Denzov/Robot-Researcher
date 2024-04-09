@@ -64,18 +64,18 @@ int main(void)
             EndBlendMode();
 
             // Draw the texts
-            DrawText("Press SPACE to change blend modes.", 310, 350, 10, GRAY);
+            rl_DrawText("Press SPACE to change blend modes.", 310, 350, 10, GRAY);
 
             switch (blendMode)
             {
-                case BLEND_ALPHA: DrawText("Current: BLEND_ALPHA", (screenWidth / 2) - 60, 370, 10, GRAY); break;
-                case BLEND_ADDITIVE: DrawText("Current: BLEND_ADDITIVE", (screenWidth / 2) - 60, 370, 10, GRAY); break;
-                case BLEND_MULTIPLIED: DrawText("Current: BLEND_MULTIPLIED", (screenWidth / 2) - 60, 370, 10, GRAY); break;
-                case BLEND_ADD_COLORS: DrawText("Current: BLEND_ADD_COLORS", (screenWidth / 2) - 60, 370, 10, GRAY); break;
+                case BLEND_ALPHA: rl_DrawText("Current: BLEND_ALPHA", (screenWidth / 2) - 60, 370, 10, GRAY); break;
+                case BLEND_ADDITIVE: rl_DrawText("Current: BLEND_ADDITIVE", (screenWidth / 2) - 60, 370, 10, GRAY); break;
+                case BLEND_MULTIPLIED: rl_DrawText("Current: BLEND_MULTIPLIED", (screenWidth / 2) - 60, 370, 10, GRAY); break;
+                case BLEND_ADD_COLORS: rl_DrawText("Current: BLEND_ADD_COLORS", (screenWidth / 2) - 60, 370, 10, GRAY); break;
                 default: break;
             }
 
-            DrawText("(c) Cyberpunk Street Environment by Luis Zuno (@ansimuz)", screenWidth - 330, screenHeight - 20, 10, GRAY);
+            rl_DrawText("(c) Cyberpunk Street Environment by Luis Zuno (@ansimuz)", screenWidth - 330, screenHeight - 20, 10, GRAY);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ int main(void)
     UnloadTexture(fgTexture); // Unload foreground texture
     UnloadTexture(bgTexture); // Unload background texture
 
-    CloseWindow();            // Close window and OpenGL context
+    rl_CloseWindow();            // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
     return 0;

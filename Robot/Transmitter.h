@@ -1,10 +1,12 @@
+#ifndef _TRANSMITTER_H_
+#define _TRANSMITTER_H_
 // This sketch code is based on the RPLIDAR driver library provided by RoboPeak
 #include <RPLidar.h>
 
 // You need to create an driver instance
 
 
-#define RPLIDAR_MOTOR 2 // The PWM pin for control the speed of RPLIDAR's motor.
+#define RPLIDAR_MOTOR 3 // The PWM pin for control the speed of RPLIDAR's motor.
 // This pin should connected with the RPLIDAR's MOTOCTRL signal
 
 class Transmitter {
@@ -60,14 +62,5 @@ class Transmitter {
       
     }
 };
-Transmitter transmitter;
-void setup() {
-  transmitter.init();
-}
 
-void loop() {
-
-
-  transmitter.take_info();
-  transmitter.transmit();
-}
+#endif

@@ -16,3 +16,6 @@ target_link_libraries(RayLibTemplate PRIVATE raylib)
 
 add_subdirectory(../Graphs ./libs/graphs)
 target_link_libraries(RayLibTemplate PRIVATE graphs)
+
+add_subdirectory(../ComPortsCommunication ./libs/ComPortsCommunication)
+target_link_libraries(RayLibTemplate PRIVATE Communications)

@@ -59,10 +59,10 @@ int main(void)
     int currentProcess = NONE;
     bool textureReload = false;
 
-    Rectangle toggleRecs[NUM_PROCESSES] = { 0 };
+    rl_Rectangle toggleRecs[NUM_PROCESSES] = { 0 };
     int mouseHoverRec = -1;
 
-    for (int i = 0; i < NUM_PROCESSES; i++) toggleRecs[i] = (Rectangle){ 40.0f, (float)(50 + 32*i), 150.0f, 30.0f };
+    for (int i = 0; i < NUM_PROCESSES; i++) toggleRecs[i] = (rl_Rectangle){ 40.0f, (float)(50 + 32*i), 150.0f, 30.0f };
 
     SetTargetFPS(60);
     //---------------------------------------------------------------------------------------
@@ -139,14 +139,14 @@ int main(void)
 
             ClearBackground(RAYWHITE);
 
-            DrawText("IMAGE PROCESSING:", 40, 30, 10, DARKGRAY);
+            rl_DrawText("IMAGE PROCESSING:", 40, 30, 10, DARKGRAY);
 
             // Draw rectangles
             for (int i = 0; i < NUM_PROCESSES; i++)
             {
                 DrawRectangleRec(toggleRecs[i], ((i == currentProcess) || (i == mouseHoverRec)) ? SKYBLUE : LIGHTGRAY);
                 DrawRectangleLines((int)toggleRecs[i].x, (int) toggleRecs[i].y, (int) toggleRecs[i].width, (int) toggleRecs[i].height, ((i == currentProcess) || (i == mouseHoverRec)) ? BLUE : GRAY);
-                DrawText( processText[i], (int)( toggleRecs[i].x + toggleRecs[i].width/2 - MeasureText(processText[i], 10)/2), (int) toggleRecs[i].y + 11, 10, ((i == currentProcess) || (i == mouseHoverRec)) ? DARKBLUE : DARKGRAY);
+                rl_DrawText( processText[i], (int)( toggleRecs[i].x + toggleRecs[i].width/2 - MeasureText(processText[i], 10)/2), (int) toggleRecs[i].y + 11, 10, ((i == currentProcess) || (i == mouseHoverRec)) ? DARKBLUE : DARKGRAY);
             }
 
             DrawTexture(texture, screenWidth - texture.width - 60, screenHeight/2 - texture.height/2, WHITE);
@@ -162,7 +162,7 @@ int main(void)
     UnloadImage(imOrigin);        // Unload image-origin from RAM
     UnloadImage(imCopy);          // Unload image-copy from RAM
 
-    CloseWindow();                // Close window and OpenGL context
+    rl_CloseWindow();                // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
     return 0;

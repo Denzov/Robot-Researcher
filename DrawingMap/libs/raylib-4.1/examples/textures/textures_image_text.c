@@ -64,7 +64,7 @@ int main(void)
             }
             else DrawTexture(font.texture, screenWidth/2 - font.texture.width/2, 50, BLACK);
 
-            DrawText("PRESS SPACE to SHOW FONT ATLAS USED", 290, 420, 10, DARKGRAY);
+            rl_DrawText("PRESS SPACE to SHOW FONT ATLAS USED", 290, 420, 10, DARKGRAY);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
@@ -76,7 +76,7 @@ int main(void)
 
     UnloadFont(font);           // Unload custom font
 
-    CloseWindow();              // Close window and OpenGL context
+    rl_CloseWindow();              // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
     return 0;

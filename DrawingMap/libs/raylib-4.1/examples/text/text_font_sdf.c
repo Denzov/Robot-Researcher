@@ -114,14 +114,14 @@ int main(void)
                 DrawTexture(fontDefault.texture, 10, 10, BLACK);
             }
 
-            if (currentFont == 1) DrawText("SDF!", 320, 20, 80, RED);
-            else DrawText("default font", 315, 40, 30, GRAY);
+            if (currentFont == 1) rl_DrawText("SDF!", 320, 20, 80, RED);
+            else rl_DrawText("default font", 315, 40, 30, GRAY);
 
-            DrawText("FONT SIZE: 16.0", GetScreenWidth() - 240, 20, 20, DARKGRAY);
-            DrawText(TextFormat("RENDER SIZE: %02.02f", fontSize), GetScreenWidth() - 240, 50, 20, DARKGRAY);
-            DrawText("Use MOUSE WHEEL to SCALE TEXT!", GetScreenWidth() - 240, 90, 10, DARKGRAY);
+            rl_DrawText("FONT SIZE: 16.0", GetScreenWidth() - 240, 20, 20, DARKGRAY);
+            rl_DrawText(TextFormat("RENDER SIZE: %02.02f", fontSize), GetScreenWidth() - 240, 50, 20, DARKGRAY);
+            rl_DrawText("Use MOUSE WHEEL to SCALE TEXT!", GetScreenWidth() - 240, 90, 10, DARKGRAY);
 
-            DrawText("HOLD SPACE to USE SDF FONT VERSION!", 340, GetScreenHeight() - 30, 20, MAROON);
+            rl_DrawText("HOLD SPACE to USE SDF FONT VERSION!", 340, GetScreenHeight() - 30, 20, MAROON);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ int main(void)
 
     UnloadShader(shader);       // Unload SDF shader
 
-    CloseWindow();              // Close window and OpenGL context
+    rl_CloseWindow();              // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
     return 0;
