@@ -16,10 +16,23 @@ Vector2 countingCoordinates(float length, float deg, Vector2 coords)
 
 Vector2 roundingToVertSize(Vector2 pos)
 {
-    float x = (int(pos.x) / int(vertexSize.x)) * int(vertexSize.x);
-    float y = (int(pos.y) / int(vertexSize.y)) * int(vertexSize.y);
+    int x, y = 0;
+    if (int(pos.x) % int(vertexSize.x) > (vertexSize.x / 2))
+    {
+        x = (int(pos.x) / int(vertexSize.x) + 1) * vertexSize.x;
+    }
+    else{
+        x = int(pos.x) / int(vertexSize.x) * vertexSize.x;
+    }
 
-    return (Vector2){x, y};
+    if (int(pos.y) % int(vertexSize.y) > (vertexSize.y / 2))
+    {
+        y = (int(pos.y) / int(vertexSize.y) + 1) * vertexSize.y;
+    }
+    else{
+        y = int(pos.y) / int(vertexSize.y) * vertexSize.y;
+    }
+    return {x, y};
 }
 
 int main()
@@ -57,21 +70,20 @@ int main()
         {
             for (auto &[pos, vertex] : (*graph.graph))
             {
-                if (vertex.neighbours.size() < 4)
+                if (vertex.neighbours.size() <= 4)
                 {
                     vec_neighs.push_back({pos.x + vertexSize.x, pos.y});
                     vec_neighs.push_back({pos.x - vertexSize.x, pos.y});
                     vec_neighs.push_back({pos.x, pos.y + vertexSize.y});
                     vec_neighs.push_back({pos.x, pos.y - vertexSize.y});
-
-                    graph.append_vert(coordinates, false);
+                    (*graph.graph)[pos].append_neighbours(vec_neighs);
                     vec_neighs.clear();
                 }
             }
 
             for (auto &[pos, vertex] : *(graph.graph))
             {
-                if (vertex.neighbours.size() < 4)
+                if (vertex.neighbours.size() <= 4)
                 {
                     for (int i = 0; i < vertex.neighbours.size(); i++)
                     {
@@ -103,10 +115,14 @@ int main()
         BeginMode2D(camera);
 
         // Draw vertexes
-        for (auto &[pos, vertex] : *graph.graph)
-        {
-            Rectangle recVert = {pos.x, pos.y, vertexSize.x, vertexSize.y};
-            DrawRectangleLinesEx(recVert, 1 / camera.zoom, GREEN);
+        // for (auto &[pos, vertex] : *(graph.graph))
+        // {
+        //     Rectangle recVert = {pos.x, pos.y, vertexSize.x, vertexSize.y};
+        //     DrawRectangleLinesEx(recVert, 1 / camera.zoom, GREEN);
+        // }
+        for(auto &[pos, wall] : *(graph.walls)){
+            Rectangle recWall = {pos.x, pos.y, vertexSize.x, vertexSize.y};
+            DrawRectangleRec(recWall, BLACK);
         }
 
         DrawRectanglePro({/*coordinate x*/ coordinates.x, /*coordinate y*/ coordinates.y, /*width*/ robotSize.x, /*height*/ robotSize.y},

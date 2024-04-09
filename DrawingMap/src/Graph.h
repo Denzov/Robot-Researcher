@@ -5,17 +5,22 @@
 
 #include "Vertex.h"
 
-struct cmpByStringLength{
-    
+struct cmpByStringLength
+{
+
     bool operator()(const Vector2 &lhs, const Vector2 &rhs) const
     {
-        if (lhs.x < rhs.x)
+        if (lhs.y < rhs.y)
         {
             return true;
         }
+        else if ((int) lhs.y == (int) rhs.y)
+        {
+            return lhs.x < rhs.x;
+        }
         else
         {
-            return lhs.y < rhs.y;
+            return false;
         }
     }
 };

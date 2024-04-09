@@ -11,7 +11,10 @@ Graph::~Graph()
 }
 void Graph::append_vert(Vector2 ver, bool wallIs)
 {
-    (*graph)[ver] = Vertex(ver, wallIs);
+    if (graph->find(ver) == graph->end())
+    {
+        (*graph)[ver] = Vertex(ver, wallIs);
+    }
 }
 
 void Graph::append_wall(Vector2 ver)
