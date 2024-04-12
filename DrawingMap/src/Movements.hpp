@@ -6,7 +6,7 @@
 
 void movementRobot(Vector2 &coord, float &degree);
 
-void movementCamera(Vector2 &coord);
+void movementCamera(Vector2 &coord,Camera2D &cam);
 
 void rotateAndZoom(Camera2D &cam);
 

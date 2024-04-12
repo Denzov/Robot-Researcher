@@ -29,7 +29,7 @@ class Graph
 {
 public:
     std::map<Vector2, Vertex, cmpByStringLength> *graph = new std::map<Vector2, Vertex, cmpByStringLength>;
-    std::map<Vector2, Vertex, cmpByStringLength> *walls = new std::map<Vector2, Vertex, cmpByStringLength>;
+    std::vector<Vertex> *walls = new std::vector<Vertex>;
 
     Graph();
     ~Graph();

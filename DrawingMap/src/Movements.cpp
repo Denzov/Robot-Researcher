@@ -23,23 +23,23 @@ void movementRobot(Vector2 &coord, float &degree)
     }
 }
 
-void movementCamera(Vector2 &coord)
+void movementCamera(Vector2 &coord, Camera2D &cam)
 {
     if (IsKeyDown(KEY_LEFT))
     {
-        coord.x -= 10;
+        coord.x -= 10/cam.zoom ;
     }
     else if (IsKeyDown(KEY_RIGHT))
     {
-        coord.x += 10;
+        coord.x += 10/cam.zoom ;
     }
     else if (IsKeyDown(KEY_UP))
     {
-        coord.y -= 10;
+        coord.y -= 10/cam.zoom ;
     }
     else if (IsKeyDown(KEY_DOWN))
     {
-        coord.y += 10;
+        coord.y += 10/cam.zoom ;
     }
 }
 
@@ -51,11 +51,9 @@ void rotateAndZoom(Camera2D &cam)
     else if (IsKeyDown(KEY_E))
         cam.rotation += 0.5;
     // Zoom
-    cam.zoom += (GetMouseWheelMove() * 0.05);
+    cam.zoom += (GetMouseWheelMove() * 0.05)/2;
     if (cam.zoom > 3.0f)
         cam.zoom = 3.0f;
-    else if (cam.zoom < 0.1f)
-        cam.zoom = 0.1f;
     // Reset all
     if (IsKeyPressed(KEY_R))
     {

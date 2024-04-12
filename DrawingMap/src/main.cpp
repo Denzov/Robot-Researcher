@@ -3,6 +3,7 @@
 #include <raylib.h>
 #include <string>
 #include <iostream>
+#include <thread>
 #include "variables.hpp"
 #include "Movements.hpp"
 #include "countingFuncs.hpp"
@@ -14,21 +15,31 @@
 
 using namespace std;
 
+void process_com_data(void *data)
+{
+    Communication port;
+    port.init(4);
+
+    float dist = 100;
+    float angle = 0;
+
+    while (true)
+    {
+        port.take_data();
+        dist = port.GetDistance();
+        angle = port.GetAngle();
+
+        // Appending walls
+        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle + degree, coordinates), vertexSize);
+
+        if(dist < 5000)graph.append_wall(coordsWall);
+    }
+}
+
 int main()
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    
-    Communication port;
-	port.init(4);
-
-	// string s = "101|5";
-	// port.push_info(s.c_str());
-    InitWindow(screenWidth, screenHeight, "robot view");
-
-    SetTargetFPS(60); // Set our game to run at 60 frames-per-second
-    //---------------------------------------------------------------------------------------
-
     // first vertex
     vector<Vector2> vec_neighs;
     vec_neighs.push_back({coordinates.x + vertexSize.x, coordinates.y});
@@ -40,56 +51,55 @@ int main()
     (*graph.graph)[coordinates].append_neighbours(vec_neighs);
     vec_neighs.clear();
 
+    // string s = "101|5";
+    // port.push_info(s.c_str());
+    InitWindow(screenWidth, screenHeight, "robot view");
+
+    SetTargetFPS(60); // Set our game to run at 60 frames-per-second
+    //---------------------------------------------------------------------------------------
     camera.target = coordinates;
     camera.rotation = 0.f;
     camera.zoom = 1.f;
+    // process_com_data()
 
-    while (!WindowShouldClose()) // Detect window close button or ESC key
+    std::thread thread_object(process_com_data, nullptr);
+
+    while ((*graph.graph).size() <= vertexQuantity)
     {
-		port.take_data();
-        dist = port.GetDistance();
-        angle = port.GetAngle();
-        string text = "distance : " + to_string(dist) + " angle :" + to_string(angle);
-
-        //------------------------------------------------------------------------
-        // Appending vertexes
-        if ((*graph.graph).size() <= vertexQuantity)
+        for (auto &[pos, vertex] : (*graph.graph))
         {
-            for (auto &[pos, vertex] : (*graph.graph))
+            if (vertex.neighbours.size() <= 4)
             {
-                if (vertex.neighbours.size() <= 4)
-                {
-                    vec_neighs.push_back({pos.x + vertexSize.x, pos.y});
-                    vec_neighs.push_back({pos.x - vertexSize.x, pos.y});
-                    vec_neighs.push_back({pos.x, pos.y + vertexSize.y});
-                    vec_neighs.push_back({pos.x, pos.y - vertexSize.y});
-                    (*graph.graph)[pos].append_neighbours(vec_neighs);
-                    vec_neighs.clear();
-                }
+                vec_neighs.push_back({pos.x + vertexSize.x, pos.y});
+                vec_neighs.push_back({pos.x - vertexSize.x, pos.y});
+                vec_neighs.push_back({pos.x, pos.y + vertexSize.y});
+                vec_neighs.push_back({pos.x, pos.y - vertexSize.y});
+                (*graph.graph)[pos].append_neighbours(vec_neighs);
+                vec_neighs.clear();
             }
+        }
 
-            for (auto &[pos, vertex] : *(graph.graph))
+        for (auto &[pos, vertex] : *(graph.graph))
+        {
+            if (vertex.neighbours.size() <= 4)
             {
-                if (vertex.neighbours.size() <= 4)
+                for (int i = 0; i < vertex.neighbours.size(); i++)
                 {
-                    for (int i = 0; i < vertex.neighbours.size(); i++)
-                    {
-                        graph.append_vert(vertex.neighbours[i], false);
-                    }
+                    graph.append_vert(vertex.neighbours[i], false);
                 }
             }
         }
-        //------------------------------------------------------------------------
+    }
 
-        // Appending walls
-        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle + degree, coordinates), vertexSize);
+    while (!WindowShouldClose()) // Detect window close button or ESC key
+    {
 
-        graph.append_wall(coordsWall);
+        //std::cout << (*graph.graph).size() << "\n";
         //-------------------------------------------------------------------------
-        screenShotMap(file_name);
+        // screenShotMap(file_name);
         movementRobot(coordinates, degree);
 
-        movementCamera(cameraCoord);
+        movementCamera(cameraCoord, camera);
         camera.target = cameraCoord;
         rotateAndZoom(camera);
 
@@ -107,19 +117,20 @@ int main()
         //     rl_Rectangle recVert = {pos.x, pos.y, vertexSize.x, vertexSize.y};
         //     DrawRectangleLinesEx(recVert, 1 / camera.zoom, GREEN);
         // }
-        for(auto &[pos, wall] : *(graph.walls)){
-            rl_Rectangle recWall = {pos.x, pos.y, vertexSize.x, vertexSize.y};
+        for (auto wall : *(graph.walls))
+        {
+            rl_Rectangle recWall = {wall.pos.x, wall.pos.y, vertexSize.x, vertexSize.y};
             DrawRectangleRec(recWall, GREEN);
         }
 
         DrawRectanglePro({/*coordinate x*/ coordinates.x, /*coordinate y*/ coordinates.y, /*width*/ robotSize.x, /*height*/ robotSize.y},
                          (Vector2){robotSize.x / 2, robotSize.y / 2}, degree, RED);
-        DrawRectanglePro({coordinates.x + robotSize.x / 2, coordinates.y, lidarSize.x, lidarSize.y},
-                        {robotSize.x / 2, robotSize.y / 2}, angle, BLACK);
-        DrawLineV(coordinates, countingCoordinates(dist, angle + degree, coordinates), VIOLET);
+        // DrawRectanglePro({coordinates.x + robotSize.x / 2, coordinates.y, lidarSize.x, lidarSize.y},
+        //                  {robotSize.x / 2, robotSize.y / 2}, angle, BLACK);
+        DrawLineV({coordinates.x + robotSize.x / 2, coordinates.y}, (graph.walls->back()).pos, VIOLET);
         EndMode2D();
 
-        rl_DrawText(text.c_str(), 20.0, 100.0, 10.0, PINK);
+        // rl_DrawText(text.c_str(), 20.0, 100.0, 10.0, PINK);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }

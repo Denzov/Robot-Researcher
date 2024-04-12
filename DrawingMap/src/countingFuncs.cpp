@@ -29,15 +29,15 @@ Vector2 roundingToVertSize(Vector2 pos, Vector2 vertexSize)
     return {float(x), float(y)};
 }
 
-bool IsPreWallExist(Vector2 posTrueWall, Vector2 lidarPos, Vector2 posWall)
-{
-    float k = (lidarPos.y - posTrueWall.y) / (lidarPos.x - posTrueWall.x);
-    float b = lidarPos.y - k * lidarPos.x;
+// bool IsPreWallExist(Vector2 posTrueWall, Vector2 lidarPos, Vector2 posWall)
+// {
+//     float k = (lidarPos.y - posTrueWall.y) / (lidarPos.x - posTrueWall.x);
+//     float b = lidarPos.y - k * lidarPos.x;
 
-    if(int(posWall.y) == int(k * posWall.x + b)){
-        return false;
-    }
-    else{
-        return true;
-    }
-}
+//     if(int(posWall.y) == int(k * posWall.x + b)){
+//         return false;
+//     }
+//     else{
+//         return true;
+//     }
+// }

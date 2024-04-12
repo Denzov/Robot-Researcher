@@ -2,10 +2,9 @@
 // copyright Adafruit Industries LLC, 2009
 // this code is public domain, enjoy!
 
-#include <AFMotor.h>
+
 #include "Transmitter.h"
-MotorR motor(1);
-MotorL motor(2);
+
 
 
 Transmitter transmitter;

@@ -36,7 +36,7 @@ void Communication::take_feedback(){
         feedback += buffer_char;
         buffer_char = com.ReadChar(successFlag);	
 	}
-    com.Delay(10);
+    com.Delay(15);
 }
 
 void Communication::transform_info(){
