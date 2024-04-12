@@ -8,7 +8,7 @@
 const int screenWidth = 1920;
 const int screenHeight = 1040;
 
-//robot
+// robot
 Vector2 coordinates = {screenWidth / 2, screenHeight / 2};
 Vector2 robotSize = {50, 50};
 float degree = 0;
@@ -16,22 +16,20 @@ Vector2 lidarSize = {20, 20};
 
 Vector2 blockSize = {5, 5};
 
-//input
+// input
 float dist = 100;
 float angle = 0;
 int last_time = 0;
 int current_time = 0;
 
-
 std::string file_name = "map.png";
 
-//graph
+// graph
 Graph graph;
 Vector2 vertexSize = {10, 10};
 int vertexQuantity = 300000;
 
-//camera
+// camera
 Camera2D camera = {0};
 Vector2 cameraCoord = {0, 0};
-
 #endif

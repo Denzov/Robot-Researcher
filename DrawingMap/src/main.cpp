@@ -3,9 +3,9 @@
 #include <raylib.h>
 #include <string>
 #include <iostream>
-#include <cmath>
 #include "variables.hpp"
 #include "Movements.hpp"
+#include "countingFuncs.hpp"
 
 #define CE_SERIAL_IMPLEMENTATION
 #define DEBUG
@@ -13,34 +13,6 @@
 #include <Communication.h>
 
 using namespace std;
-
-Vector2 countingCoordinates(float length, float deg, Vector2 coords)
-{
-    float x = cos(deg * PI / 180) * length + coords.x;
-    float y = sin(deg * PI / 180) * length + coords.y;
-    return (Vector2){x, y};
-}
-
-Vector2 roundingToVertSize(Vector2 pos)
-{
-    int x, y = 0;
-    if (int(pos.x) % int(vertexSize.x) > (vertexSize.x / 2))
-    {
-        x = (int(pos.x) / int(vertexSize.x) + 1) * vertexSize.x;
-    }
-    else{
-        x = int(pos.x) / int(vertexSize.x) * vertexSize.x;
-    }
-
-    if (int(pos.y) % int(vertexSize.y) > (vertexSize.y / 2))
-    {
-        y = (int(pos.y) / int(vertexSize.y) + 1) * vertexSize.y;
-    }
-    else{
-        y = int(pos.y) / int(vertexSize.y) * vertexSize.y;
-    }
-    return {x, y};
-}
 
 int main()
 {
@@ -110,7 +82,7 @@ int main()
         //------------------------------------------------------------------------
 
         // Appending walls
-        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle + degree, coordinates));
+        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle + degree, coordinates), vertexSize);
 
         graph.append_wall(coordsWall);
         //-------------------------------------------------------------------------

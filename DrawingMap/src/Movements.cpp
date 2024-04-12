@@ -1,5 +1,4 @@
 #include <cmath>
-
 #include "Movements.hpp"
 
 void movementRobot(Vector2 &coord, float &degree)
