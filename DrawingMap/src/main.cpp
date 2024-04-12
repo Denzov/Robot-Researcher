@@ -110,12 +110,12 @@ int main()
         //------------------------------------------------------------------------
 
         // Appending walls
-        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle, coordinates));
+        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle + degree, coordinates));
 
         graph.append_wall(coordsWall);
         //-------------------------------------------------------------------------
         screenShotMap(file_name);
-        movementRobot(coordinates, angle);
+        movementRobot(coordinates, degree);
 
         movementCamera(cameraCoord);
         camera.target = cameraCoord;
@@ -137,15 +137,17 @@ int main()
         // }
         for(auto &[pos, wall] : *(graph.walls)){
             rl_Rectangle recWall = {pos.x, pos.y, vertexSize.x, vertexSize.y};
-            DrawRectangleRec(recWall, BLACK);
+            DrawRectangleRec(recWall, GREEN);
         }
 
         DrawRectanglePro({/*coordinate x*/ coordinates.x, /*coordinate y*/ coordinates.y, /*width*/ robotSize.x, /*height*/ robotSize.y},
-                         (Vector2){robotSize.x / 2, robotSize.y / 2}, angle, RED);
-        DrawLineV(coordinates, countingCoordinates(dist, angle, coordinates), VIOLET);
+                         (Vector2){robotSize.x / 2, robotSize.y / 2}, degree, RED);
+        DrawRectanglePro({coordinates.x + robotSize.x / 2, coordinates.y, lidarSize.x, lidarSize.y},
+                        {robotSize.x / 2, robotSize.y / 2}, angle, BLACK);
+        DrawLineV(coordinates, countingCoordinates(dist, angle + degree, coordinates), VIOLET);
         EndMode2D();
 
-        rl_DrawText(text.c_str(), 20.0, 100.0, 10.0, MAROON);
+        rl_DrawText(text.c_str(), 20.0, 100.0, 10.0, PINK);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }

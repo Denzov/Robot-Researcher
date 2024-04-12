@@ -11,6 +11,8 @@ const int screenHeight = 1040;
 //robot
 Vector2 coordinates = {screenWidth / 2, screenHeight / 2};
 Vector2 robotSize = {50, 50};
+float degree = 0;
+Vector2 lidarSize = {20, 20};
 
 Vector2 blockSize = {5, 5};
 
