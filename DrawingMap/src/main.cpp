@@ -18,6 +18,7 @@ using namespace std;
 void process_com_data(void *data)
 {
     Communication port;
+    
     port.init(4);
 
     float dist = 0;
@@ -25,6 +26,8 @@ void process_com_data(void *data)
 
     do
     {
+        port.push_info("1");
+
         port.take_data();
         dist = port.GetDistance();
         angle = port.GetAngle();
@@ -41,6 +44,7 @@ int main()
     // Initialization
     //--------------------------------------------------------------------------------------
     // first vertex
+    
     vector<Vector2> vec_neighs;
     vec_neighs.push_back({coordinates.x + vertexSize.x, coordinates.y});
     vec_neighs.push_back({coordinates.x - vertexSize.x, coordinates.y});

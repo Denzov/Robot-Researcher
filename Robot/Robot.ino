@@ -4,13 +4,15 @@
 
 
 #include "Transmitter.h"
+#include "Receiver.h"
 
+  Transmitter transmitter;
+  Receiver receiver;
 
-
-Transmitter transmitter;
 void setup() {
   //Serial.println("Motor test!");
   transmitter.init();
+  receiver.init();
   // turn on motor
 }
 
@@ -21,7 +23,8 @@ void loop() {
   
   motor.run(FORWARD);
   motor.setSpeed(200);  */
+  receiver.take_data();
+  receiver.do_action();
   transmitter.take_info();
   transmitter.transmit();
-  
 }

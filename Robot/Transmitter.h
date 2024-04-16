@@ -22,13 +22,13 @@ class Transmitter {
     void init() {
 
       Serial.begin(9600);
-      Serial2.begin(57600);
+      Serial2.begin(9600);
       lidar.begin(Serial3);
 
       pinMode(RPLIDAR_MOTOR, OUTPUT);
       lidar.startScan();
       analogWrite(RPLIDAR_MOTOR, 0);
-      Serial.println("YES");
+      //Serial.println("YES");
 
       while (!IS_OK(lidar.waitPoint())) {
         analogWrite(RPLIDAR_MOTOR, 0); //stop the rplidar motor

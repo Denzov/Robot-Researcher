@@ -1,3 +1,6 @@
+#ifndef _GYRO_H_
+#define _GYRO_H_
+
 #include <DFRobot_BMI160.h>
 #define AcX
 #define AcY 
@@ -81,3 +84,4 @@ class Gyro {
     }
 
 };
+#endif            
