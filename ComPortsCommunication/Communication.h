@@ -45,7 +45,7 @@ public:
     bool infoIsCorrect();
 
     template <class T>
-    void push_info(T* data);
+    void push_info(T data);
     
 
     float GetDistance();
@@ -55,7 +55,7 @@ public:
 };
 
 template <class T>
-void Communication::push_info(T* data)
+void Communication::push_info(T data)
 {
     std::sprintf(s_data, "%s", &data);
     successFlag = com.Write(s_data, strlen(s_data) + 1);

@@ -20,10 +20,10 @@ void process_com_data(void *data)
     Communication port;
     port.init(4);
 
-    float dist = 100;
+    float dist = 0;
     float angle = 0;
 
-    while (true)
+    do
     {
         port.take_data();
         dist = port.GetDistance();
@@ -32,8 +32,8 @@ void process_com_data(void *data)
         // Appending walls
         Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle + degree, coordinates), vertexSize);
 
-        if(dist < 5000)graph.append_wall(coordsWall);
-    }
+        graph.append_wall(coordsWall);
+    }while(1);
 }
 
 int main()
@@ -90,7 +90,7 @@ int main()
             }
         }
     }
-
+    
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
 
@@ -119,7 +119,7 @@ int main()
         // }
         for (auto wall : *(graph.walls))
         {
-            rl_Rectangle recWall = {wall.pos.x, wall.pos.y, vertexSize.x, vertexSize.y};
+            rl_Rectangle recWall = {wall.pos.x, wall.pos.y, vertexSize.x/(camera.zoom + 0.5), vertexSize.y/(camera.zoom + 0.5 )};
             DrawRectangleRec(recWall, GREEN);
         }
 

@@ -22,7 +22,7 @@ class Transmitter {
     void init() {
 
       Serial.begin(9600);
-      Serial2.begin(9600);
+      Serial2.begin(57600);
       lidar.begin(Serial3);
 
       pinMode(RPLIDAR_MOTOR, OUTPUT);
