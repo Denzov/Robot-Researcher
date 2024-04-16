@@ -2,6 +2,7 @@
 #define _GRAPH_H_
 
 #include <map>
+#include <vector>
 
 #include "Vertex.h"
 
@@ -33,7 +34,9 @@ public:
 
     Graph();
     ~Graph();
-
+    
+    std::vector<Vector2> find_path(Vector2 from, Vector2 to);
+    bool makeSeen(Vector2 posEyes, Vector2 posVertex, Vector2 vertexSize);
     void append_wall(Vector2 ver);
     void append_vert(Vector2 ver, bool wallIs);
 };

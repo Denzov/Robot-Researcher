@@ -91,6 +91,8 @@ int main()
         }
     }
     
+    graph.find_path(coordinates, {coordinates.x + vertexSize.x, coordinates.y + vertexSize.y * 5});
+
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
 
@@ -119,7 +121,7 @@ int main()
         // }
         for (auto wall : *(graph.walls))
         {
-            rl_Rectangle recWall = {wall.pos.x, wall.pos.y, vertexSize.x/(camera.zoom + 0.5), vertexSize.y/(camera.zoom + 0.5 )};
+            rl_Rectangle recWall = {wall.pos.x, wall.pos.y, vertexSize.x, vertexSize.y};
             DrawRectangleRec(recWall, GREEN);
         }
 
