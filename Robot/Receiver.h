@@ -14,8 +14,8 @@ enum Action : uint8_t {
 
 class Receiver {
 private:
-  AF_DCMotor MotorR = AF_DCMotor(1);
-  AF_DCMotor MotorL = AF_DCMotor(2);
+  AF_DCMotor MotorR = {1};
+  AF_DCMotor MotorL = {2};
   Gyro gyro;
   char buffer_char;
   bool actionIsCompleted = 0;
