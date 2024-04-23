@@ -12,6 +12,7 @@ Graph::~Graph()
 {
     delete graph;
     delete walls;
+    delete unseen;
 }
 void Graph::append_vert(Vector2 ver, bool wallIs)
 {
@@ -29,7 +30,7 @@ void Graph::append_wall(Vector2 ver)
 
 vector<Vector2> Graph::find_path(Vector2 from, Vector2 to)
 {
-    
+
     auto front = deque<Vertex>();
     auto visited = map<Vector2, bool, cmpByStringLength>();
     auto path = map<Vector2, Vector2, cmpByStringLength>();
@@ -86,20 +87,47 @@ vector<Vector2> Graph::find_path(Vector2 from, Vector2 to)
     return pathReversed;
 }
 
-bool Graph::makeSeen(Vector2 posEyes, Vector2 posVertex, Vector2 vertexSize)
+void Graph::makeSeen(Vector2 posEyes, float angle, Vector2 vertexSize)
 {
+    Vector2 posVertex = roundingToVertSize(countingCoordinates(vertexSize.x * 5, angle, posEyes), vertexSize);
     float k = (posEyes.y - posVertex.y) / (posEyes.x - posVertex.x);
     float b = posEyes.y - k * posEyes.x;
+    float xi;
+    int count = 40;
     if (posEyes.x > posVertex.x)
     {
-        for(float xi = posEyes.x; xi > posVertex.x; xi -= vertexSize.x){
-            (*graph)[{xi, roundingToVertSize({xi, (k * xi + b)}, vertexSize).y}].seen = true;
+        xi = posEyes.x;
+        while (count > 1 && !((*graph)[{xi, roundingToVertSize({xi, (k * xi + b)}, vertexSize).y}].isWall)){
+            count--;
+            unseen->erase({xi, roundingToVertSize({xi, (k * xi + b)}, vertexSize).y});
+            xi -= vertexSize.x;
         }
     }
     else
     {
-        for(float xi = posEyes.x; xi < posVertex.x; xi += vertexSize.x){
-            (*graph)[{xi, roundingToVertSize({xi, (k * xi + b)}, vertexSize).y}].seen = true;
+        xi = posEyes.x;
+        while (count > 1 && !((*graph)[{xi, roundingToVertSize({xi, (k * xi + b)}, vertexSize).y}].isWall)){
+            count--;
+            unseen->erase({xi, roundingToVertSize({xi, (k * xi + b)}, vertexSize).y});
+            xi += vertexSize.x;
         }
     }
+}
+
+Vector2 Graph::countingClosestUnseen(Vector2 posFrom){
+    float mindist;
+    Vector2 minKey= unseen->begin()->first;
+    for (auto i = unseen->begin(); i != unseen->end();)
+    {   
+        float dist = abs(posFrom.x - i->first.x) + abs(posFrom.y - i->first.y);
+        if(i == unseen->begin()){
+            mindist = dist;
+        }
+        else if(mindist > dist){
+            mindist = dist;
+            minKey = i->first;
+        }
+    }
+    return minKey;
+    
 }

@@ -14,7 +14,6 @@ private:
 
 public:
     bool isWall = 0;
-    bool seen = 0;
     Vector2 pos;
 
     std::vector<Vector2> neighbours;

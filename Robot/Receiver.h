@@ -5,8 +5,7 @@
 #include "Gyro.h"
 
 enum Action : uint8_t {
-  NEW = 1,
-  A_FORWARD,
+  A_FORWARD = 1,
   A_BACK,
   A_TURN_LEFT,
   A_TURN_RIGHT,
@@ -21,60 +20,45 @@ private:
   char buffer_char;
   bool actionIsCompleted = 0;
 
-  float current_millis = 0, last_millis = 0, delta_time = 3000;
+  float current_millis = 0, last_millis = 0, delta_time = 10000;
   float angle = 0;
 
   Action action = A_STOP;
   uint8_t speed[2];
-  const int16_t SPEED = 200;
+  const int16_t SPEED = 100;
 
 public:
   void init() {
-
     //gyro.init();
-   // while(action != NEW){
-  //    if(Serial2.available()) action = atoi(Serial2.readString().c_str());
-      //Serial.println(action);
-   // }
+    Serial.begin(9600);
+    Serial2.begin(9600);
   }
   void take_data() {
 
     //actionIsCompleted = 0;
 
-      
-      if(Serial2.available()) 
-      {
-        action = atoi(Serial2.readString().c_str());
-        Serial.println(action);
-      }
-
+    
+      buffer_char = Serial2.read();
+      Serial.println(buffer_char);
+    
   }
   void do_action() {
     //gyro.calc();
-    //Serial.println(actionIsCompleted);
-    if(action == NEW){
-      last_millis = millis();
-      actionIsCompleted = 0; 
-    }
     if (!actionIsCompleted) {
       switch (action) {
         case A_FORWARD:
-          //Serial.println("FORWARD");
           current_millis = millis();
-          if(current_millis - last_millis > delta_time) {
+          if (current_millis - last_millis > delta_time) {
             last_millis = current_millis;
             actionIsCompleted = 1;
-            
             break;
           }
-          //Serial.print(2);
           MotorR.run(FORWARD);
           MotorL.run(FORWARD);
           MotorR.setSpeed(SPEED);
           MotorL.setSpeed(SPEED);
           break;
         case A_BACK:
-          current_millis = millis();
           if (current_millis - last_millis > delta_time) {
             last_millis = current_millis;
             actionIsCompleted = 1;
@@ -86,15 +70,11 @@ public:
           MotorL.setSpeed(SPEED);
           break;
         case A_TURN_RIGHT:
-          MotorR.run(BACKWARD);
-          MotorL.run(FORWARD);
-          MotorR.setSpeed(SPEED);
+          MotorR.setSpeed(-SPEED);
           MotorL.setSpeed(SPEED);
           break;
         case A_TURN_LEFT:
-          MotorR.run(FORWARD);
-          MotorL.run(BACKWARD);
-          MotorR.setSpeed(SPEED);
+          MotorR.setSpeed(-SPEED);
           MotorL.setSpeed(SPEED);
           break;
         case A_STOP:

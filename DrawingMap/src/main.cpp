@@ -22,26 +22,21 @@ void process_com_data(void *data)
     port.init(4);
 
     float dist = 0;
-    float angle = 0;
-    
+    float angleLidar = 0;
+
     do
-    {   
-        if(IsKeyPressed(KEY_T)){
-            port.push_info("1");
-        }
-        else if(IsKeyPressed(KEY_W)){
-            port.push_info("2");
-        }
-        else if(IsKeyPressed(KEY_S)){
-            port.push_info("3");
-        }
-        
+    {
+        port.push_info("1");
+
         port.take_data();
         dist = port.GetDistance();
-        angle = port.GetAngle();
+        angleLidar = port.GetAngle();
 
         // Appending walls
-        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angle + degree, coordinates), vertexSize);
+        Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angleLidar + angleRobot, coordinates), vertexSize);
+        graph.makeSeen(coordinates, angleLidar + angleRobot, vertexSize);
+
+        graph.find_path(coordinates, graph.countingClosestUnseen(coordinates));
 
         graph.append_wall(coordsWall);
     }while(1);
@@ -98,12 +93,11 @@ int main()
                 for (int i = 0; i < vertex.neighbours.size(); i++)
                 {
                     graph.append_vert(vertex.neighbours[i], false);
+                    (*graph.unseen)[vertex.neighbours[i]] = Vertex(vertex.neighbours[i], false);
                 }
             }
         }
     }
-    
-    graph.find_path(coordinates, {coordinates.x + vertexSize.x, coordinates.y + vertexSize.y * 5});
 
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
@@ -111,7 +105,7 @@ int main()
         //std::cout << (*graph.graph).size() << "\n";
         //-------------------------------------------------------------------------
         // screenShotMap(file_name);
-        movementRobot(coordinates, degree);
+        movementRobot(coordinates, angleRobot);
 
         movementCamera(cameraCoord, camera);
         camera.target = cameraCoord;
@@ -124,13 +118,6 @@ int main()
         ClearBackground(WHITE);
 
         BeginMode2D(camera);
-
-        // Draw vertexes
-        // for (auto &[pos, vertex] : *(graph.graph))
-        // {
-        //     rl_Rectangle recVert = {pos.x, pos.y, vertexSize.x, vertexSize.y};
-        //     DrawRectangleLinesEx(recVert, 1 / camera.zoom, GREEN);
-        // }
         for (auto wall : *(graph.walls))
         {
             rl_Rectangle recWall = {wall.pos.x, wall.pos.y, vertexSize.x, vertexSize.y};
@@ -138,10 +125,10 @@ int main()
         }
 
         DrawRectanglePro({/*coordinate x*/ coordinates.x, /*coordinate y*/ coordinates.y, /*width*/ robotSize.x, /*height*/ robotSize.y},
-                         (Vector2){robotSize.x / 2, robotSize.y / 2}, degree, RED);
+                         (Vector2){robotSize.x / 2, robotSize.y / 2}, angleRobot, RED);
         // DrawRectanglePro({coordinates.x + robotSize.x / 2, coordinates.y, lidarSize.x, lidarSize.y},
         //                  {robotSize.x / 2, robotSize.y / 2}, angle, BLACK);
-        DrawLineV({coordinates.x + robotSize.x / 2, coordinates.y}, (graph.walls->back()).pos, VIOLET);
+        //DrawLineV(coordinates, (graph.walls->back()).pos, VIOLET);
         EndMode2D();
 
         // rl_DrawText(text.c_str(), 20.0, 100.0, 10.0, PINK);

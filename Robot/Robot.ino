@@ -8,28 +8,23 @@
 
   Transmitter transmitter;
   Receiver receiver;
-  
+
 void setup() {
-  Serial.begin(9600);
-  Serial2.begin(9600);
-      
   //Serial.println("Motor test!");
-  receiver.init();
   transmitter.init();
-  
-  
+  receiver.init();
   // turn on motor
 }
 
 void loop() {
   /*uint8_t i;
   
-  //Serial.print("tick");*/
+  //Serial.print("tick");
   
-
- 
-  transmitter.take_info();
-  transmitter.transmit();
+  motor.run(FORWARD);
+  motor.setSpeed(200);  */
   receiver.take_data();
   receiver.do_action();
+  transmitter.take_info();
+  transmitter.transmit();
 }

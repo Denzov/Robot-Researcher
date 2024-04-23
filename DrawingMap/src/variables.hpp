@@ -13,7 +13,7 @@ Vector2 coordinates = {screenWidth / 2, screenHeight / 2};
     
 
 Vector2 robotSize = {200, 200};
-float degree = 0;
+float angleRobot = 0;
 Vector2 lidarSize = {20, 20};
 
 
@@ -28,7 +28,7 @@ std::string file_name = "map.png";
 // graph
 Graph graph;
 Vector2 vertexSize = {10, 10};
-uint64_t vertexQuantity = 1000;
+uint64_t vertexQuantity = 10000;
 
 // camera
 Camera2D camera = {0};

@@ -3,24 +3,24 @@
 
 void movementRobot(Vector2 &coord, float &degree)
 {
-    // if (IsKeyDown(KEY_W))
-    // {
-    //     coord.y += 10 * sin(degree * PI / 180);
-    //     coord.x += 10 * cos(degree * PI / 180);
-    // }
-    // if (IsKeyDown(KEY_A))
-    // {
-    //     degree -= 5;
-    // }
-    // if (IsKeyDown(KEY_D))
-    // {
-    //     degree += 5;
-    // }
-    // if (IsKeyDown(KEY_S))
-    // {
-    //     coord.y -= 10 * sin(degree * PI / 180);
-    //     coord.x -= 10 * cos(degree * PI / 180);
-    // }
+    if (IsKeyDown(KEY_W))
+    {
+        coord.y += 10 * sin(degree * PI / 180);
+        coord.x += 10 * cos(degree * PI / 180);
+    }
+    if (IsKeyDown(KEY_A))
+    {
+        degree -= 5;
+    }
+    if (IsKeyDown(KEY_D))
+    {
+        degree += 5;
+    }
+    if (IsKeyDown(KEY_S))
+    {
+        coord.y -= 10 * sin(degree * PI / 180);
+        coord.x -= 10 * cos(degree * PI / 180);
+    }
 }
 
 void movementCamera(Vector2 &coord, Camera2D &cam)

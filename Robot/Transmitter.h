@@ -6,7 +6,7 @@
 // You need to create an driver instance
 
 
-#define RPLIDAR_MOTOR 2 // The PWM pin for control the speed of RPLIDAR's motor.
+#define RPLIDAR_MOTOR 3 // The PWM pin for control the speed of RPLIDAR's motor.
 // This pin should connected with the RPLIDAR's MOTOCTRL signal
 
 class Transmitter {
@@ -21,7 +21,8 @@ class Transmitter {
   public:
     void init() {
 
-      
+      Serial.begin(9600);
+      Serial2.begin(9600);
       lidar.begin(Serial3);
 
       pinMode(RPLIDAR_MOTOR, OUTPUT);
