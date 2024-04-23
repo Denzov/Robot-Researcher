@@ -23,11 +23,19 @@ void process_com_data(void *data)
 
     float dist = 0;
     float angle = 0;
-
+    
     do
-    {
-        port.push_info("1");
-
+    {   
+        if(IsKeyPressed(KEY_T)){
+            port.push_info("1");
+        }
+        else if(IsKeyPressed(KEY_W)){
+            port.push_info("2");
+        }
+        else if(IsKeyPressed(KEY_S)){
+            port.push_info("3");
+        }
+        
         port.take_data();
         dist = port.GetDistance();
         angle = port.GetAngle();
