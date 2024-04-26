@@ -16,6 +16,10 @@ Communication port;
 		port.take_data();s
 	} 
 */
+enum STATE{
+    REQUEST, 
+    SENDING
+};
 class Communication
 {
 private:
@@ -23,10 +27,11 @@ private:
 
     bool successFlag;
     bool number_of_data = 0;
-
-    
     char buffer_char;
-    std::string buffer_str; 
+
+    STATE state = (STATE)1;
+
+    std::string buffer_str;
     std::string feedback;
 
     float data[2];
@@ -35,7 +40,8 @@ private:
     uint8_t value_correct_sym = 0;
 
 public:
-    
+    bool canSending = 0;
+    ceSerial com;
     void take_feedback();
     void transform_info();
     void print_data();
@@ -43,7 +49,7 @@ public:
 
     bool init(uint8_t port);
     bool infoIsCorrect();
-
+    bool GetCanSending();
     template <class T>
     void push_info(T data);
     

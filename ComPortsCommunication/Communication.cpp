@@ -1,6 +1,10 @@
 #include "Communication.h"
 #include <cstdint>
 
+bool Communication::GetCanSending(){
+    return state == REQUEST;
+}
+
 bool Communication::init(uint8_t port){
     com.SetPortName("\\\\.\\COM"+std::to_string(port));
     com.SetBaudRate(9600);
@@ -30,7 +34,13 @@ void Communication::take_feedback(){
     
 	while(successFlag)
 	{
-        if(buffer_char == '@'){
+        if(buffer_char == '@' ){
+            state = STATE::SENDING;
+            break;
+        }
+        else if(buffer_char == '!'){
+            state = STATE::REQUEST;
+            std::cout<<"BANG\n";
             break;
         }
         feedback += buffer_char;
@@ -40,19 +50,27 @@ void Communication::take_feedback(){
 }
 
 void Communication::transform_info(){
-    buffer_str.resize(number_of_stick);
-    for (uint8_t i = 0; i < number_of_stick; i++)
-    {
-        buffer_str[i] = feedback[i];
+    switch(state){
+        case SENDING:
+            buffer_str.resize(number_of_stick);
+            for (uint8_t i = 0; i < number_of_stick; i++)
+            {
+                buffer_str[i] = feedback[i];
+            }
+            data[0] = std::stof(buffer_str);
+            
+            buffer_str.resize(feedback.size() - number_of_stick);
+            for (uint8_t i = 0; i < feedback.size() - number_of_stick; i++)
+            {
+                buffer_str[i] = feedback[number_of_stick + i + 1];
+            }
+            data[1] = std::stof(buffer_str);
+            break;
+        case REQUEST:
+            canSending = 1;
+            break;
+
     }
-    data[0] = std::stof(buffer_str);
-    
-    buffer_str.resize(feedback.size() - number_of_stick);
-    for (uint8_t i = 0; i < feedback.size() - number_of_stick; i++)
-    {
-        buffer_str[i] = feedback[number_of_stick + i + 1];
-    }
-    data[1] = std::stof(buffer_str);
     
 }
 

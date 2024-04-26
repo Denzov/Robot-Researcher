@@ -1,30 +1,34 @@
-// Adafruit Motor shield library
-// copyright Adafruit Industries LLC, 2009
-// this code is public domain, enjoy!
-
-
 #include "Transmitter.h"
 #include "Receiver.h"
 
-  Transmitter transmitter;
-  Receiver receiver;
+uint8_t nLetters = 0;
+
+Transmitter transmitter;
+Receiver receiver;
 
 void setup() {
-  //Serial.println("Motor test!");
-  transmitter.init();
+  Serial.begin(9600);
+  Serial2.begin(9600);
+
+  
+
   receiver.init();
-  // turn on motor
+  transmitter.init();
+
+  //Serial.print(1);
 }
 
 void loop() {
-  /*uint8_t i;
-  
-  //Serial.print("tick");
-  
-  motor.run(FORWARD);
-  motor.setSpeed(200);  */
-  receiver.take_data();
-  receiver.do_action();
+  // ML.run(FORWARD);
+  // ML.setSpeed(255);
+  //Serial.println();
   transmitter.take_info();
-  transmitter.transmit();
+  transmitter.transmit(&nLetters);
+
+  receiver.do_action();
+  receiver.take_data(&nLetters);
+
+
+  //receiver.test();
+
 }

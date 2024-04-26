@@ -25,9 +25,21 @@ void process_com_data(void *data)
     float angleLidar = 0;
 
     do
-    {
-        port.push_info("1");
-
+    {   
+        if(port.GetCanSending()){
+            if(IsKeyPressed(KEY_T)){
+                port.push_info("1");
+                port.canSending = 0;
+            }
+            else if(IsKeyPressed(KEY_W)){
+                port.push_info("2");
+                port.canSending = 0;
+            }
+            else if(IsKeyPressed(KEY_S)){
+                port.push_info("3");
+                port.canSending = 0;
+            }
+        }
         port.take_data();
         dist = port.GetDistance();
         angleLidar = port.GetAngle();

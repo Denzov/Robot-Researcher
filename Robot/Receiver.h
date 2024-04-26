@@ -1,3 +1,4 @@
+#include "HardwareSerial.h"
 #ifndef _RECEIVER_H_
 #define _RECEIVER_H_
 
@@ -28,22 +29,51 @@ private:
   const int16_t SPEED = 100;
 
 public:
+  Receiver(){}
   void init() {
+
+
+    MotorL.setSpeed(200);
+    MotorL.run(RELEASE);
+
+    MotorR.setSpeed(200);
+    MotorR.run(RELEASE);
+
+    MotorL.setSpeed(0);
+    MotorL.run(FORWARD);
+
+    MotorR.setSpeed(0);
+    MotorR.run(FORWARD);
     //gyro.init();
-    Serial.begin(9600);
-    Serial2.begin(9600);
+    // while(action != NEW){
+    //    if(Serial2.available()) action = atoi(Serial2.readString().c_str());
+    //Serial.println(action);
+    // }
   }
-  void take_data() {
+  void take_data(int8_t* nLetters) {
+    Serial.print("reading ");
+    Serial.println(Serial2.available());
 
-    //actionIsCompleted = 0;
-
-    
-      buffer_char = Serial2.read();
-      Serial.println(buffer_char);
-    
+    Serial.println(*nLetters);
+    if ( (*nLetters) >= 15 && Serial2.available()) {
+      action = atoi(Serial2.readString().c_str());
+      Serial.println(action);
+      *nLetters = 0;
+    }
+  }
+  void test(){
+    MotorR.run(FORWARD);
+    MotorR.setSpeed(255);
   }
   void do_action() {
     //gyro.calc();
+    //Serial.println(actionIsCompleted);
+
+    //Serial.print(2);
+    if (action == NEW) {
+      last_millis = millis();
+      actionIsCompleted = 0;
+    }
     if (!actionIsCompleted) {
       switch (action) {
         case A_FORWARD:
@@ -51,6 +81,7 @@ public:
           if (current_millis - last_millis > delta_time) {
             last_millis = current_millis;
             actionIsCompleted = 1;
+
             break;
           }
           MotorR.run(FORWARD);
