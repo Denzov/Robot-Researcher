@@ -11,11 +11,8 @@ const int screenHeight = 1040;
 // robot
 Vector2 coordinates = {screenWidth / 2, screenHeight / 2};
     
-
 Vector2 robotSize = {200, 200};
 float angleRobot = 0;
-Vector2 lidarSize = {20, 20};
-
 
 
 // input
@@ -28,9 +25,15 @@ std::string file_name = "map.png";
 // graph
 Graph graph;
 Vector2 vertexSize = {10, 10};
+float scale = 0.1;//in mm
 uint64_t vertexQuantity = 10000;
 
 // camera
 Camera2D camera = {0};
 Vector2 cameraCoord = {0, 0};
+
+Texture2D minimap;
+Vector2 minimapPos = {100, 100};
+Vector2 minimapSize = {100, 200};
+
 #endif

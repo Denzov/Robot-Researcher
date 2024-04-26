@@ -36,7 +36,11 @@ void process_com_data(void *data)
         Vector2 coordsWall = roundingToVertSize(countingCoordinates(dist, angleLidar + angleRobot, coordinates), vertexSize);
         graph.makeSeen(coordinates, angleLidar + angleRobot, vertexSize);
 
-        graph.find_path(coordinates, graph.countingClosestUnseen(coordinates));
+        if(graph.find_path(coordinates, graph.countingClosestUnseen(coordinates)).empty())
+        {
+            graph.unseen->erase(graph.countingClosestUnseen(coordinates));
+            graph.append_wall(graph.countingClosestUnseen(coordinates));
+        }
 
         graph.append_wall(coordsWall);
     }while(1);
@@ -58,8 +62,6 @@ int main()
     (*graph.graph)[coordinates].append_neighbours(vec_neighs);
     vec_neighs.clear();
 
-    // string s = "101|5";
-    // port.push_info(s.c_str());
     InitWindow(screenWidth, screenHeight, "robot view");
 
     SetTargetFPS(60); // Set our game to run at 60 frames-per-second
@@ -111,6 +113,7 @@ int main()
         camera.target = cameraCoord;
         rotateAndZoom(camera);
 
+        minimapPos = {cameraCoord.x - 100, cameraCoord.y - 200};      
         //----------------------------------------------------------------------------------
         // Draw
         //----------------------------------------------------------------------------------
@@ -126,16 +129,17 @@ int main()
 
         DrawRectanglePro({/*coordinate x*/ coordinates.x, /*coordinate y*/ coordinates.y, /*width*/ robotSize.x, /*height*/ robotSize.y},
                          (Vector2){robotSize.x / 2, robotSize.y / 2}, angleRobot, RED);
-        // DrawRectanglePro({coordinates.x + robotSize.x / 2, coordinates.y, lidarSize.x, lidarSize.y},
-        //                  {robotSize.x / 2, robotSize.y / 2}, angle, BLACK);
-        //DrawLineV(coordinates, (graph.walls->back()).pos, VIOLET);
+        
         EndMode2D();
 
+        minimap = LoadTextureFromImage(LoadImageFromScreen());
+        DrawRectangleLinesEx({minimapPos.x, minimapPos.y, minimapSize.x, minimapSize.y}, 5.f, BLACK);
+        DrawTextureEx(minimap, minimapPos, 0, ((screenHeight * screenWidth) / (minimapSize.x * minimapSize.y)), WHITE);
         // rl_DrawText(text.c_str(), 20.0, 100.0, 10.0, PINK);
         EndDrawing();
+        UnloadTexture(minimap);
         //----------------------------------------------------------------------------------
     }
-
     // De-Initialization
     //--------------------------------------------------------------------------------------
     rl_CloseWindow(); // Close window and OpenGL context

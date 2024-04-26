@@ -39,7 +39,7 @@ vector<Vector2> Graph::find_path(Vector2 from, Vector2 to)
     path[from] = from;
 
     while (front.size() > 0)
-    {
+    {   
         auto v = front.front();
         front.pop_front();
         if (v.pos.x == to.x && v.pos.y == to.y)
@@ -81,8 +81,8 @@ vector<Vector2> Graph::find_path(Vector2 from, Vector2 to)
         }
         visited[v.pos] = true;
     }
-
-    cout << "ended";
+    
+    //path does not exist
     pathReversed.clear();
     return pathReversed;
 }
@@ -116,7 +116,7 @@ void Graph::makeSeen(Vector2 posEyes, float angle, Vector2 vertexSize)
 
 Vector2 Graph::countingClosestUnseen(Vector2 posFrom){
     float mindist;
-    Vector2 minKey= unseen->begin()->first;
+    Vector2 minKey = unseen->begin()->first;
     for (auto i = unseen->begin(); i != unseen->end();)
     {   
         float dist = abs(posFrom.x - i->first.x) + abs(posFrom.y - i->first.y);
