@@ -9,12 +9,13 @@
 Example:
 
 Communication port;
-	port.init(4);
-	// string s = "101|5";
-	// port.push_info(s.c_str());
-	while(1){Ы
-		port.take_data();s
-	} 
+port.init(4);
+string s = "101";
+port.push_info(s.c_str());
+while(1)
+{
+	port.take_data()
+} 
 */
 enum STATE{
     REQUEST, 
